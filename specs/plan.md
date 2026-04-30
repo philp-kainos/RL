@@ -8,7 +8,7 @@ Order matters: do top-to-bottom.
 ## Phase 0 — Foundation
 
 - [x] Scaffold Next.js 15 (App Router, TS, Tailwind, ESLint) into the repo root.
-- [ ] Add Vitest + @testing-library/react + jest-dom; one passing smoke test.
+- [x] Add Vitest + @testing-library/react + jest-dom; one passing smoke test.
 - [ ] Add `pnpm typecheck` script (`tsc --noEmit`) and ensure CI gates pass.
 - [ ] Add `lib/env.ts` validating `process.env` with zod; export typed `env`.
 - [ ] Add `lib/db.ts` exporting a Drizzle client connected to `env.DATABASE_URL` (Supabase Postgres pooled connection string).
