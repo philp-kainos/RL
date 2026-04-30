@@ -10,6 +10,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Freeman Firewood brand palette */
+  --color-brand-brown: #3D1F0D;
+  --color-brand-brown-light: #6B3A20;
+  --color-brand-cream: #FFF8EE;
+  --color-brand-cream-dark: #F0E0C4;
+  --color-brand-orange: #C2561A;
+  --color-brand-orange-light: #E07040;
 }
 
 @media (prefers-color-scheme: dark) {

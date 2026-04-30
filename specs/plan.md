@@ -13,7 +13,7 @@ Order matters: do top-to-bottom.
 - [x] Add `lib/env.ts` validating `process.env` with zod; export typed `env`.
 - [x] Add `lib/db.ts` exporting a Drizzle client connected to `env.DATABASE_URL` (Supabase Postgres pooled connection string).
 - [x] Add `lib/supabase/server.ts` and `lib/supabase/client.ts` helpers (server + browser clients, using `@supabase/ssr` with cookie-based auth).
-- [ ] Add brand tokens to `tailwind.config.ts` (warm wood palette: deep brown, cream, ember orange).
+- [x] Add brand tokens to `tailwind.config.ts` (warm wood palette: deep brown, cream, ember orange).
 - [ ] Add `components/Header.tsx` and `components/Footer.tsx`; wire into `app/layout.tsx`. Snapshot tests.
 - [ ] Add `app/healthz/route.ts` returning `{ status: "ok" }`; test.
 
