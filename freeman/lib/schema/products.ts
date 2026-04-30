@@ -7,6 +7,7 @@ export const products = pgTable("products", {
   description: text("description").notNull(),
   unitLabel: text("unit_label").notNull(),
   pricePence: integer("price_pence").notNull(),
+  isPoa: boolean("is_poa").notNull().default(false),
   imageUrl: text("image_url"),
   stock: integer("stock").notNull().default(0),
   isActive: boolean("is_active").notNull().default(true),
