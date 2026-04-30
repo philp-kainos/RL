@@ -15,7 +15,7 @@ Order matters: do top-to-bottom.
 - [x] Add `lib/supabase/server.ts` and `lib/supabase/client.ts` helpers (server + browser clients, using `@supabase/ssr` with cookie-based auth).
 - [x] Add brand tokens to `tailwind.config.ts` (warm wood palette: deep brown, cream, ember orange).
 - [x] Add `components/Header.tsx` and `components/Footer.tsx`; wire into `app/layout.tsx`. Snapshot tests.
-- [ ] Add `app/healthz/route.ts` returning `{ status: "ok" }`; test.
+- [x] Add `app/healthz/route.ts` returning `{ status: "ok" }`; test.
 
 ## Phase 1 — Catalogue & marketing
 
