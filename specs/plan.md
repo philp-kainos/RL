@@ -9,7 +9,7 @@ Order matters: do top-to-bottom.
 
 - [x] Scaffold Next.js 15 (App Router, TS, Tailwind, ESLint) into the repo root.
 - [x] Add Vitest + @testing-library/react + jest-dom; one passing smoke test.
-- [ ] Add `pnpm typecheck` script (`tsc --noEmit`) and ensure CI gates pass.
+- [x] Add `pnpm typecheck` script (`tsc --noEmit`) and ensure CI gates pass.
 - [ ] Add `lib/env.ts` validating `process.env` with zod; export typed `env`.
 - [ ] Add `lib/db.ts` exporting a Drizzle client connected to `env.DATABASE_URL` (Supabase Postgres pooled connection string).
 - [ ] Add `lib/supabase/server.ts` and `lib/supabase/client.ts` helpers (server + browser clients, using `@supabase/ssr` with cookie-based auth).

@@ -2,3 +2,13 @@
 ==================================================
   iteration 1  —  2026-04-30T22:11:14+00:00
 ==================================================
+Item 1 is complete and pushed. The Next.js 16 scaffold (App Router, TypeScript strict mode, Tailwind CSS, ESLint) lives in `freeman/`. Added `typecheck` and a stub `test` script so all three CI gates (`pnpm lint`, `pnpm typecheck`, `pnpm test -- --run`) pass green. Next item: add Vitest + testing-library with a passing smoke test.
+
+==================================================
+  iteration 2  —  2026-04-30T22:15:37+00:00
+==================================================
+Done. Installed Vitest 4.1.5 + `@testing-library/react` + `@testing-library/jest-dom` + `jsdom`, configured `vitest.config.ts` with jsdom environment and the `@/*` alias, wrote one smoke test for `app/page.tsx` (mocking `next/image`), and updated the `test` script. Lint, typecheck, and tests all pass — committed and pushed to `ralph/run-1`.
+
+==================================================
+  iteration 3  —  2026-04-30T22:19:08+00:00
+==================================================
