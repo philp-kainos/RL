@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header > matches snapshot 1`] = `
+<DocumentFragment>
+  <header
+    class="bg-brand-brown text-brand-cream"
+  >
+    <div
+      class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4"
+    >
+      <a
+        class="text-xl font-bold tracking-tight"
+        href="/"
+      >
+        Freeman Firewood
+      </a>
+      <nav
+        aria-label="Main navigation"
+      >
+        <ul
+          class="flex gap-6 text-sm font-medium"
+        >
+          <li>
+            <a
+              class="hover:text-brand-orange-light transition-colors"
+              href="/products"
+            >
+              Products
+            </a>
+          </li>
+          <li>
+            <a
+              class="hover:text-brand-orange-light transition-colors"
+              href="/delivery"
+            >
+              Delivery
+            </a>
+          </li>
+          <li>
+            <a
+              class="hover:text-brand-orange-light transition-colors"
+              href="/about"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              class="hover:text-brand-orange-light transition-colors"
+              href="/contact"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</DocumentFragment>
+`;
