@@ -38,6 +38,6 @@ describe("lib/db", () => {
   });
 
   it("passes the sql client to drizzle", () => {
-    expect(drizzle).toHaveBeenCalledWith(expect.any(Object));
+    expect(drizzle).toHaveBeenCalledWith(expect.any(Object), { schema: expect.any(Object) });
   });
 });

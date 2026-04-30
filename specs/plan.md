@@ -19,7 +19,7 @@ Order matters: do top-to-bottom.
 
 ## Phase 1 — Catalogue & marketing
 
-- [ ] Drizzle schema: `products` (id, slug, name, description, unitLabel, pricePence, imageUrl, stock, isActive).
+- [x] Drizzle schema: `products` (id, slug, name, description, unitLabel, pricePence, imageUrl, stock, isActive).
 - [ ] Seed script with Freeman's real products: 0.9m³ kiln-dried hardwood bag (8"), 0.9m³ kiln-dried hardwood bag (10"), force-dried woodchip (POA flag).
 - [ ] `app/products/page.tsx` — grid of active products from DB. Test: empty state + populated.
 - [ ] `app/products/[slug]/page.tsx` — detail page; 404 if slug missing. Test both paths.
