@@ -7,7 +7,7 @@ Order matters: do top-to-bottom.
 
 ## Phase 0 — Foundation
 
-- [ ] Scaffold Next.js 15 (App Router, TS, Tailwind, ESLint) into the repo root.
+- [x] Scaffold Next.js 15 (App Router, TS, Tailwind, ESLint) into the repo root.
 - [ ] Add Vitest + @testing-library/react + jest-dom; one passing smoke test.
 - [ ] Add `pnpm typecheck` script (`tsc --noEmit`) and ensure CI gates pass.
 - [ ] Add `lib/env.ts` validating `process.env` with zod; export typed `env`.
