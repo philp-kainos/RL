@@ -1,7 +1,5 @@
 {
-  "root": "freeman",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "framework": "nextjs",
-  "outputDirectory": ".next"
+  "framework": "nextjs"
 }

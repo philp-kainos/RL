@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "cd freeman && npm run dev",
+    "build": "cd freeman && npm run build",
+    "start": "cd freeman && npm run start",
+    "lint": "cd freeman && npm run lint",
+    "test": "cd freeman && npm run test"
+  }
+}
