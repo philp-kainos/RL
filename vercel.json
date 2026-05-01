@@ -1,5 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
+  "installCommand": "cd freeman && npm install",
+  "buildCommand": "cd freeman && npm run build",
+  "devCommand": "cd freeman && npm run dev",
   "framework": "nextjs"
 }

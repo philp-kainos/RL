@@ -1,5 +1,8 @@
 {
   "private": true,
+  "dependencies": {
+    "next": "16.2.4"
+  },
   "scripts": {
     "dev": "cd freeman && npm run dev",
     "build": "cd freeman && npm run build",
