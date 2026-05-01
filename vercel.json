@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd freeman && npm run build",
-  "devCommand": "cd freeman && npm run dev",
-  "installCommand": "npm install",
+  "root": "freeman",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
   "framework": "nextjs",
-  "outputDirectory": "freeman/.next"
+  "outputDirectory": ".next"
 }
