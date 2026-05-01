@@ -25,7 +25,7 @@ Order matters: do top-to-bottom.
 - [x] `app/products/[slug]/page.tsx` — detail page; 404 if slug missing. Test both paths.
 - [x] Replace marketing pages with Freeman-equivalent copy: `app/page.tsx` (home), `app/about/page.tsx`, `app/delivery/page.tsx`, `app/faqs/page.tsx`, `app/contact/page.tsx`.
 - [x] Add `app/sitemap.ts`, `app/robots.ts`, OG tags via metadata API.
-- [ ] Create a public Supabase Storage bucket `product-images`; add an upload helper; replace seed `imageUrl`s with real uploads.
+- [x] Create a public Supabase Storage bucket `product-images`; add an upload helper; replace seed `imageUrl`s with real uploads.
 
 ## Phase 2 — Shop & checkout
 

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#5C3317"/>
+  <rect x="60" y="130" width="280" height="140" rx="10" fill="#7A4A28"/>
+  <rect x="80" y="145" width="240" height="24" rx="4" fill="#9B6040"/>
+  <rect x="80" y="179" width="240" height="24" rx="4" fill="#9B6040"/>
+  <rect x="80" y="213" width="240" height="24" rx="4" fill="#9B6040"/>
+  <text x="200" y="320" font-family="sans-serif" font-size="16" font-weight="bold" fill="#F5E6D3" text-anchor="middle">Kiln-Dried Hardwood</text>
+  <text x="200" y="344" font-family="sans-serif" font-size="14" fill="#F5E6D3" text-anchor="middle">0.9m³ Bag (10")</text>
+</svg>

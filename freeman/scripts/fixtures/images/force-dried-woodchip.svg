@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#4A7C59"/>
+  <rect x="70" y="150" width="260" height="100" rx="8" fill="#3A6449"/>
+  <circle cx="120" cy="200" r="16" fill="#6B9E7A"/>
+  <circle cx="170" cy="185" r="12" fill="#6B9E7A"/>
+  <circle cx="200" cy="205" r="18" fill="#6B9E7A"/>
+  <circle cx="250" cy="190" r="14" fill="#6B9E7A"/>
+  <circle cx="290" cy="208" r="16" fill="#6B9E7A"/>
+  <text x="200" y="310" font-family="sans-serif" font-size="16" font-weight="bold" fill="#F5E6D3" text-anchor="middle">Force-Dried Woodchip</text>
+  <text x="200" y="334" font-family="sans-serif" font-size="13" fill="#F5E6D3" text-anchor="middle">Price on Application</text>
+</svg>

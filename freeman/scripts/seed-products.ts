@@ -1,8 +1,15 @@
 // Run with: npx tsx scripts/seed-products.ts
+import { readFile } from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 import { sql } from "drizzle-orm";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { db } from "@/lib/db";
 import { products } from "@/lib/schema/products";
+import { uploadProductImage } from "@/lib/storage/upload-product-image";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const SEED_PRODUCTS: (typeof products.$inferInsert)[] = [
   {
@@ -40,10 +47,33 @@ export const SEED_PRODUCTS: (typeof products.$inferInsert)[] = [
   },
 ];
 
-export async function seedProducts(database = db): Promise<void> {
+async function resolveImageUrl(
+  supabase: SupabaseClient,
+  slug: string,
+): Promise<string | undefined> {
+  const imagePath = path.join(__dirname, "fixtures/images", `${slug}.svg`);
+  const imageData = await readFile(imagePath);
+  return uploadProductImage(supabase, slug, imageData, "image/svg+xml");
+}
+
+export async function seedProducts(
+  database = db,
+  supabase?: SupabaseClient,
+): Promise<void> {
+  const rows = supabase
+    ? await Promise.all(
+        SEED_PRODUCTS.map(async (product) => {
+          const imageUrl = await resolveImageUrl(supabase, product.slug).catch(
+            () => undefined,
+          );
+          return { ...product, imageUrl };
+        }),
+      )
+    : SEED_PRODUCTS;
+
   await database
     .insert(products)
-    .values(SEED_PRODUCTS)
+    .values(rows)
     .onConflictDoUpdate({
       target: products.slug,
       set: {
@@ -52,6 +82,7 @@ export async function seedProducts(database = db): Promise<void> {
         unitLabel: sql`excluded.unit_label`,
         pricePence: sql`excluded.price_pence`,
         isPoa: sql`excluded.is_poa`,
+        imageUrl: sql`excluded.image_url`,
         isActive: sql`excluded.is_active`,
       },
     });
