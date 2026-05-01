@@ -1,0 +1,26 @@
+{
+  "name": "ralph-nextjs",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": false
+    }
+  },
+  "postCreateCommand": "npm install -g pnpm @anthropic-ai/claude-code && pnpm install || true",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer"
+      ]
+    }
+  },
+  "forwardPorts": [3000],
+  "remoteEnv": {
+    "TERM": "xterm-256color"
+  }
+}

@@ -12,3 +12,5 @@ Done. Installed Vitest 4.1.5 + `@testing-library/react` + `@testing-library/jest
 ==================================================
   iteration 3  —  2026-04-30T22:19:08+00:00
 ==================================================
+Done. The `typecheck` script (`tsc --noEmit`) was already present in `freeman/package.json`; I verified all three CI gates (`pnpm lint`, `pnpm typecheck`, `pnpm test -- --run`) pass clean, ticked the item, and pushed.
+Stopped after 3 iteration(s). Reason: 

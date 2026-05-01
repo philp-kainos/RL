@@ -1,0 +1,1165 @@
+
+==================================================
+  iteration 1  —  2026-04-30T22:49:37+00:00
+==================================================
+Done. Created `freeman/lib/env.ts` with a zod schema validating `DATABASE_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY`. Three tests cover the happy path plus invalid/missing vars. All lint, typecheck, and tests pass; pushed to `ralph/run-1`.
+
+==================================================
+  iteration 2  —  2026-04-30T22:51:55+00:00
+==================================================
+Done. Created `freeman/lib/db.ts` which exports a Drizzle client connected to `env.DATABASE_URL` using `postgres` (postgres.js) as the driver, with a co-located test covering the export, the URL wiring, and the drizzle call. All lint/typecheck/tests pass and the commit is pushed.
+
+==================================================
+  iteration 3  —  2026-04-30T22:54:34+00:00
+==================================================
+Done. Added `lib/supabase/server.ts` (async server client using Next.js 15's async `cookies()`) and `lib/supabase/client.ts` (browser client with `"use client"` directive), both backed by `@supabase/ssr` 0.10.2 and reading credentials via `lib/env.ts`. All 13 tests pass, lint and typecheck clean, committed and pushed.
+
+==================================================
+  iteration 4  —  2026-04-30T22:57:34+00:00
+==================================================
+Done. Added Freeman Firewood brand tokens (`--color-brand-brown`, `--color-brand-cream`, `--color-brand-orange` plus light variants) to `freeman/app/globals.css` via Tailwind v4's `@theme` directive. All lint/typecheck/tests pass and the commit is pushed.
+
+==================================================
+  iteration 5  —  2026-04-30T22:59:18+00:00
+==================================================
+Done. Created `components/Header.tsx` (brand nav bar with brown/cream/orange palette) and `components/Footer.tsx` (copyright footer), wired both into `app/layout.tsx`, added co-located snapshot + smoke tests (19 tests passing), and pushed to `ralph/run-1`.
+
+==================================================
+  iteration 6  —  2026-04-30T23:02:11+00:00
+==================================================
+Done. Created `app/healthz/route.ts` (GET handler returning `{ status: "ok" }`) and `app/healthz/route.test.ts` (verifies 200 status and body). All 20 tests pass, committed and pushed.
+
+==================================================
+  iteration 7  —  2026-04-30T23:03:19+00:00
+==================================================
+Done. Here's what was implemented:
+
+- **`freeman/lib/schema/products.ts`** — Drizzle `pgTable` definition with all 9 columns (id, slug, name, description, unitLabel, pricePence, imageUrl, stock, isActive), plus `Product` and `NewProduct` inferred types.
+- **`freeman/drizzle/0001_products.sql`** — SQL migration with `CREATE TABLE` + `ALTER TABLE products ENABLE ROW LEVEL SECURITY` + a public SELECT policy (products are the public catalogue; service role bypasses RLS for writes).
+- **`freeman/lib/db.ts`** — updated to pass the schema to `drizzle()` for type inference.
+- **`freeman/lib/schema/products.test.ts`** — 5 tests covering table name, column presence, nullable `imageUrl`, and default values for `stock` and `isActive`.
+- Updated the pre-existing `lib/db.test.ts` assertion to match the new two-argument `drizzle()` call.
+
+All 25 tests pass; lint and typecheck are clean.
+
+==================================================
+  iteration 8  —  2026-04-30T23:07:30+00:00
+==================================================
+Done. Here's what was delivered:
+
+- **`drizzle/0002_products_poa.sql`** — migration adding `is_poa BOOLEAN NOT NULL DEFAULT FALSE` to the products table
+- **`lib/schema/products.ts`** — updated with the `isPoa` field
+- **`scripts/seed-products.ts`** — exports `SEED_PRODUCTS` (3 products) and `seedProducts(db?)` which upserts on slug conflict. Prices for the priced bags carry `TODO(freeman):` comments since I can't confirm them without client input
+- **`scripts/seed-products.test.ts`** — 5 tests covering product count, each product's presence, the POA flag, and the DB call
+- **`package.json`** — added `"seed": "npx tsx scripts/seed-products.ts"` for manual invocation
+
+All 30 tests pass, lint clean, typecheck clean.
+
+==================================================
+  iteration 9  —  2026-04-30T23:14:14+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 10  —  2026-04-30T23:17:02+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 11  —  2026-04-30T23:17:16+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 12  —  2026-04-30T23:17:30+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 13  —  2026-04-30T23:17:45+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 14  —  2026-04-30T23:18:01+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 15  —  2026-04-30T23:18:15+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 16  —  2026-04-30T23:18:30+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 17  —  2026-04-30T23:18:44+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 18  —  2026-04-30T23:18:58+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 19  —  2026-04-30T23:19:12+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 20  —  2026-04-30T23:19:27+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 21  —  2026-04-30T23:19:41+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 22  —  2026-04-30T23:19:55+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 23  —  2026-04-30T23:20:09+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 24  —  2026-04-30T23:20:24+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 25  —  2026-04-30T23:20:38+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 26  —  2026-04-30T23:20:53+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 27  —  2026-04-30T23:21:07+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 28  —  2026-04-30T23:21:22+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 29  —  2026-04-30T23:21:36+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 30  —  2026-04-30T23:21:50+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 31  —  2026-04-30T23:22:04+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 32  —  2026-04-30T23:22:18+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 33  —  2026-04-30T23:22:33+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 34  —  2026-04-30T23:22:47+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 35  —  2026-04-30T23:23:01+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 36  —  2026-04-30T23:23:16+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 37  —  2026-04-30T23:23:30+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 38  —  2026-04-30T23:23:44+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 39  —  2026-04-30T23:23:59+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 40  —  2026-04-30T23:24:13+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 41  —  2026-04-30T23:24:28+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 42  —  2026-04-30T23:24:42+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 43  —  2026-04-30T23:24:57+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 44  —  2026-04-30T23:25:12+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 45  —  2026-04-30T23:25:26+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 46  —  2026-04-30T23:25:40+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 47  —  2026-04-30T23:25:54+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 48  —  2026-04-30T23:26:09+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 49  —  2026-04-30T23:26:23+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 50  —  2026-04-30T23:26:37+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 51  —  2026-04-30T23:26:51+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 52  —  2026-04-30T23:27:06+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 53  —  2026-04-30T23:27:20+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 54  —  2026-04-30T23:27:34+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 55  —  2026-04-30T23:27:49+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 56  —  2026-04-30T23:28:03+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 57  —  2026-04-30T23:28:17+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 58  —  2026-04-30T23:28:32+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 59  —  2026-04-30T23:28:46+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 60  —  2026-04-30T23:29:00+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 61  —  2026-04-30T23:29:15+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 62  —  2026-04-30T23:29:29+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 63  —  2026-04-30T23:29:43+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 64  —  2026-04-30T23:29:57+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 65  —  2026-04-30T23:30:12+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 66  —  2026-04-30T23:30:27+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 67  —  2026-04-30T23:30:42+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 68  —  2026-04-30T23:30:55+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 69  —  2026-04-30T23:31:10+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 70  —  2026-04-30T23:31:25+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 71  —  2026-04-30T23:31:39+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 72  —  2026-04-30T23:31:53+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 73  —  2026-04-30T23:32:07+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 74  —  2026-04-30T23:32:21+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 75  —  2026-04-30T23:32:35+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 76  —  2026-04-30T23:32:48+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 77  —  2026-04-30T23:33:02+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 78  —  2026-04-30T23:33:16+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 79  —  2026-04-30T23:33:30+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 80  —  2026-04-30T23:33:44+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 81  —  2026-04-30T23:33:58+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 82  —  2026-04-30T23:34:12+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 83  —  2026-04-30T23:34:25+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 84  —  2026-04-30T23:34:40+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 85  —  2026-04-30T23:34:54+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 86  —  2026-04-30T23:35:07+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 87  —  2026-04-30T23:35:21+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 88  —  2026-04-30T23:35:35+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 89  —  2026-04-30T23:35:49+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 90  —  2026-04-30T23:36:03+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 91  —  2026-04-30T23:36:17+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 92  —  2026-04-30T23:36:30+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 93  —  2026-04-30T23:36:45+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 94  —  2026-04-30T23:36:58+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 95  —  2026-04-30T23:37:13+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 96  —  2026-04-30T23:37:27+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 97  —  2026-04-30T23:37:41+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 98  —  2026-04-30T23:37:56+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 99  —  2026-04-30T23:38:09+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 100  —  2026-04-30T23:38:23+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 101  —  2026-04-30T23:38:36+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 102  —  2026-04-30T23:38:50+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 103  —  2026-04-30T23:39:05+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 104  —  2026-04-30T23:39:18+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 105  —  2026-04-30T23:39:32+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 106  —  2026-04-30T23:39:46+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 107  —  2026-04-30T23:39:59+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 108  —  2026-04-30T23:40:13+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 109  —  2026-04-30T23:40:26+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 110  —  2026-04-30T23:40:40+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 111  —  2026-04-30T23:40:53+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 112  —  2026-04-30T23:41:07+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 113  —  2026-04-30T23:41:21+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 114  —  2026-04-30T23:41:34+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 115  —  2026-04-30T23:41:47+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 116  —  2026-04-30T23:42:01+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 117  —  2026-04-30T23:42:14+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 118  —  2026-04-30T23:42:27+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 119  —  2026-04-30T23:42:41+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 120  —  2026-04-30T23:42:54+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 121  —  2026-04-30T23:43:07+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 122  —  2026-04-30T23:43:21+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 123  —  2026-04-30T23:43:35+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 124  —  2026-04-30T23:43:50+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 125  —  2026-04-30T23:44:03+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 126  —  2026-04-30T23:44:17+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 127  —  2026-04-30T23:44:31+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 128  —  2026-04-30T23:44:44+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 129  —  2026-04-30T23:44:58+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 130  —  2026-04-30T23:45:12+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 131  —  2026-04-30T23:45:26+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 132  —  2026-04-30T23:45:39+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 133  —  2026-04-30T23:45:53+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 134  —  2026-04-30T23:46:06+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 135  —  2026-04-30T23:46:20+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 136  —  2026-04-30T23:46:33+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 137  —  2026-04-30T23:46:47+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 138  —  2026-04-30T23:47:01+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 139  —  2026-04-30T23:47:14+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 140  —  2026-04-30T23:47:28+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 141  —  2026-04-30T23:47:42+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 142  —  2026-04-30T23:47:56+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 143  —  2026-04-30T23:48:09+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 144  —  2026-04-30T23:48:23+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 145  —  2026-04-30T23:48:37+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 146  —  2026-04-30T23:48:51+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 147  —  2026-04-30T23:49:05+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 148  —  2026-04-30T23:49:18+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 149  —  2026-04-30T23:49:31+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 150  —  2026-04-30T23:49:45+00:00
+==================================================
+You've hit your limit · resets 11:50pm (UTC)
+
+==================================================
+  iteration 151  —  2026-04-30T23:49:59+00:00
+==================================================
+Done. `app/products/page.tsx` is implemented and pushed.
+
+The page is an async Server Component that queries Drizzle for `isActive` products and renders them as a responsive card grid using brand colors. Five tests cover the heading, empty state, populated grid, POA pricing, and card link hrefs. All 35 tests pass (lint and typecheck clean).
+
+==================================================
+  iteration 152  —  2026-04-30T23:54:28+00:00
+==================================================
+Done. Implemented `app/products/[slug]/page.tsx` — queries by slug, calls `notFound()` for missing slugs, displays product name/description/unit/price (with POA support). Three tests cover: product found, POA display, and 404 path. All lint/typecheck/tests green.
+
+==================================================
+  iteration 153  —  2026-04-30T23:57:19+00:00
+==================================================
+Done. Created five marketing pages with Freeman-equivalent copy (`app/page.tsx`, `app/about/page.tsx`, `app/delivery/page.tsx`, `app/faqs/page.tsx`, `app/contact/page.tsx`) plus co-located tests for each. All 60 tests pass. Business-specific details that can't be verified (phone number, exact address, opening hours, full postcode list, lead times) are marked with `TODO(freeman):` comments. Committed and pushed.
+
+==================================================
+  iteration 154  —  2026-05-01T00:02:32+00:00
+==================================================
+Done. Implemented and pushed:
+
+- **`app/sitemap.ts`** — async function returning all 6 static pages plus dynamic product URLs from the DB
+- **`app/robots.ts`** — allows all crawlers, points to `/sitemap.xml`
+- **`app/layout.tsx`** — `metadataBase`, title template (`%s | Freeman Firewood`), and default `openGraph`/`twitter` metadata
+- **`app/products/[slug]/page.tsx`** — added `generateMetadata` for per-product title, description, and OG url
+
+All 69 tests pass (18 test files, including 7 new tests for sitemap, robots, and `generateMetadata`).
+
+==================================================
+  iteration 155  —  2026-05-01T00:07:08+00:00
+==================================================
+Done. Here's what was delivered:
+
+- **`drizzle/0003_product_images_bucket.sql`** — creates the `product-images` Storage bucket (`public: true`) and idempotent RLS policies: public SELECT, service_role-only INSERT/UPDATE
+- **`lib/storage/upload-product-image.ts`** — `uploadProductImage(supabase, slug, data, contentType)` uploads to the bucket and returns the public URL; handles content-type → extension mapping including `image/svg+xml → .svg`
+- **`lib/storage/upload-product-image.test.ts`** — 6 tests covering bucket name, path/extension mapping, public URL return, and error throwing
+- **`scripts/fixtures/images/*.svg`** — placeholder SVGs for each of the 3 seed products
+- **`scripts/seed-products.ts`** — `seedProducts(db, supabase?)` now accepts an optional Supabase client; when provided, reads fixture SVGs, uploads them, and stores the public URLs; falls back gracefully if upload fails
+
+All 77 tests green, lint clean, typecheck clean.
+
+==================================================
+  iteration 156  —  2026-05-01T00:14:21+00:00
+==================================================
+Done. Here's what was shipped in commit `01d4d9b`:
+
+- **`drizzle/0004_carts.sql`** — `carts` and `cart_items` tables with RLS enabled; authenticated users can manage their own rows; guest carts are server-side only (postgres superuser via Drizzle)
+- **`lib/schema/carts.ts`** — Drizzle schema + inferred TypeScript types
+- **`lib/cart-cookie.ts`** — HMAC-SHA256 signing/verification for guest session IDs using Node's built-in `crypto`; no new dependencies
+- **`lib/cart.ts`** — `getOrCreateGuestCart`, `getOrCreateUserCart`, `mergeGuestCartToUser` (quantities summed for items in both carts)
+- **`lib/env.ts`** — `CART_SECRET` added as required env var
+- All 93 tests green
+
+==================================================
+  iteration 157  —  2026-05-01T00:24:03+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 158  —  2026-05-01T00:28:29+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 159  —  2026-05-01T00:28:43+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 160  —  2026-05-01T00:28:56+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 161  —  2026-05-01T00:29:10+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 162  —  2026-05-01T00:29:24+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 163  —  2026-05-01T00:29:37+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 164  —  2026-05-01T00:29:50+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 165  —  2026-05-01T00:30:04+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 166  —  2026-05-01T00:30:18+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 167  —  2026-05-01T00:30:31+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 168  —  2026-05-01T00:30:44+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 169  —  2026-05-01T00:30:58+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 170  —  2026-05-01T00:31:12+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 171  —  2026-05-01T00:31:26+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 172  —  2026-05-01T00:31:39+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 173  —  2026-05-01T00:31:52+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 174  —  2026-05-01T00:32:06+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 175  —  2026-05-01T00:32:19+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 176  —  2026-05-01T00:32:33+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 177  —  2026-05-01T00:32:47+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 178  —  2026-05-01T00:33:00+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 179  —  2026-05-01T00:33:14+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 180  —  2026-05-01T00:33:27+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 181  —  2026-05-01T00:33:40+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 182  —  2026-05-01T00:33:55+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 183  —  2026-05-01T00:34:09+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 184  —  2026-05-01T00:34:23+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 185  —  2026-05-01T00:34:36+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 186  —  2026-05-01T00:34:50+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 187  —  2026-05-01T00:35:04+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 188  —  2026-05-01T00:35:18+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 189  —  2026-05-01T00:35:31+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 190  —  2026-05-01T00:35:44+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 191  —  2026-05-01T00:35:58+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 192  —  2026-05-01T00:36:12+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 193  —  2026-05-01T00:36:25+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 194  —  2026-05-01T00:36:38+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 195  —  2026-05-01T00:36:53+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 196  —  2026-05-01T00:37:06+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 197  —  2026-05-01T00:37:19+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 198  —  2026-05-01T00:37:33+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 199  —  2026-05-01T00:37:46+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 200  —  2026-05-01T00:38:00+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 201  —  2026-05-01T00:38:13+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 202  —  2026-05-01T00:38:27+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 203  —  2026-05-01T00:38:40+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 204  —  2026-05-01T00:38:54+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 205  —  2026-05-01T00:39:07+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 206  —  2026-05-01T00:39:20+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 207  —  2026-05-01T00:39:34+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 208  —  2026-05-01T00:39:48+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 209  —  2026-05-01T00:40:01+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 210  —  2026-05-01T00:40:15+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 211  —  2026-05-01T00:40:29+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 212  —  2026-05-01T00:40:42+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 213  —  2026-05-01T00:40:56+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 214  —  2026-05-01T00:41:10+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 215  —  2026-05-01T00:41:23+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 216  —  2026-05-01T00:41:37+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 217  —  2026-05-01T00:41:51+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 218  —  2026-05-01T00:42:04+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 219  —  2026-05-01T00:42:18+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 220  —  2026-05-01T00:42:31+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 221  —  2026-05-01T00:42:44+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 222  —  2026-05-01T00:42:57+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 223  —  2026-05-01T00:43:10+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 224  —  2026-05-01T00:43:25+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
+
+==================================================
+  iteration 225  —  2026-05-01T00:43:39+00:00
+==================================================
+You've hit your limit · resets 4:50am (UTC)
