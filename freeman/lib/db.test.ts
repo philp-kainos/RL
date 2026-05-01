@@ -16,6 +16,7 @@ vi.mock("./env", () => ({
     NEXT_PUBLIC_SUPABASE_URL: "https://abc.supabase.co",
     NEXT_PUBLIC_SUPABASE_ANON_KEY: "anon-key",
     SUPABASE_SERVICE_ROLE_KEY: "service-role-key",
+    CART_SECRET: "test-cart-secret",
   },
 }));
 

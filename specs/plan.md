@@ -29,7 +29,7 @@ Order matters: do top-to-bottom.
 
 ## Phase 2 — Shop & checkout
 
-- [ ] Cart model: server-side cart in DB keyed by signed cookie for guests; merge to user on login.
+- [x] Cart model: server-side cart in DB keyed by signed cookie for guests; merge to user on login.
 - [ ] `addToCart` server action with zod validation. Test add, increment, remove.
 - [ ] `app/basket/page.tsx` — line items, qty controls, subtotal.
 - [ ] `postcodes` table + delivery zone schema: prefix → zonePence + leadDays.
