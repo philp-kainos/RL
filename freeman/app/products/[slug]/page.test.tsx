@@ -27,7 +27,7 @@ vi.mock("next/navigation", () => ({
   notFound: mockNotFound,
 }));
 
-import ProductDetailPage from "./page";
+import ProductDetailPage, { generateMetadata } from "./page";
 
 describe("ProductDetailPage", () => {
   beforeEach(() => {
@@ -100,5 +100,72 @@ describe("ProductDetailPage", () => {
     ).rejects.toThrow("NEXT_NOT_FOUND");
 
     expect(mockNotFound).toHaveBeenCalledOnce();
+  });
+});
+
+describe("generateMetadata", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockFrom.mockReturnValue({ where: mockWhere });
+    mockSelect.mockReturnValue({ from: mockFrom });
+  });
+
+  it("returns title and description for a known product", async () => {
+    mockWhere.mockResolvedValue([
+      {
+        id: 1,
+        slug: "kiln-dried-hardwood-8in",
+        name: '0.9m³ Kiln-Dried Hardwood Bag (8")',
+        description: "A bag of kiln-dried hardwood logs.",
+        unitLabel: "0.9m³ bag",
+        pricePence: 18000,
+        isPoa: false,
+        imageUrl: null,
+        stock: 10,
+        isActive: true,
+      },
+    ]);
+
+    const meta = await generateMetadata({
+      params: Promise.resolve({ slug: "kiln-dried-hardwood-8in" }),
+    });
+
+    expect(meta.title).toBe('0.9m³ Kiln-Dried Hardwood Bag (8")');
+    expect(meta.description).toBe("A bag of kiln-dried hardwood logs.");
+  });
+
+  it("returns empty object for an unknown slug", async () => {
+    mockWhere.mockResolvedValue([]);
+
+    const meta = await generateMetadata({
+      params: Promise.resolve({ slug: "nonexistent" }),
+    });
+
+    expect(meta).toEqual({});
+  });
+
+  it("includes openGraph url for a known product", async () => {
+    mockWhere.mockResolvedValue([
+      {
+        id: 1,
+        slug: "kiln-dried-hardwood-8in",
+        name: '0.9m³ Kiln-Dried Hardwood Bag (8")',
+        description: "A bag of kiln-dried hardwood logs.",
+        unitLabel: "0.9m³ bag",
+        pricePence: 18000,
+        isPoa: false,
+        imageUrl: null,
+        stock: 10,
+        isActive: true,
+      },
+    ]);
+
+    const meta = await generateMetadata({
+      params: Promise.resolve({ slug: "kiln-dried-hardwood-8in" }),
+    });
+
+    expect((meta.openGraph as { url?: string })?.url).toBe(
+      "https://freemanfirewood.co.uk/products/kiln-dried-hardwood-8in",
+    );
   });
 });

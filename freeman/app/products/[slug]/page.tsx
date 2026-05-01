@@ -1,11 +1,34 @@
+import type { Metadata } from "next";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { products } from "@/lib/schema/products";
 
+const BASE_URL = "https://freemanfirewood.co.uk";
+
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const [product] = await db
+    .select()
+    .from(products)
+    .where(eq(products.slug, slug));
+
+  if (!product) return {};
+
+  return {
+    title: product.name,
+    description: product.description,
+    openGraph: {
+      title: product.name,
+      description: product.description,
+      url: `${BASE_URL}/products/${slug}`,
+    },
+  };
 }
 
 export default async function ProductDetailPage({ params }: Props) {
