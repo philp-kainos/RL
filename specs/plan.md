@@ -23,7 +23,7 @@ Order matters: do top-to-bottom.
 - [x] Seed script with Freeman's real products: 0.9m³ kiln-dried hardwood bag (8"), 0.9m³ kiln-dried hardwood bag (10"), force-dried woodchip (POA flag).
 - [x] `app/products/page.tsx` — grid of active products from DB. Test: empty state + populated.
 - [x] `app/products/[slug]/page.tsx` — detail page; 404 if slug missing. Test both paths.
-- [ ] Replace marketing pages with Freeman-equivalent copy: `app/page.tsx` (home), `app/about/page.tsx`, `app/delivery/page.tsx`, `app/faqs/page.tsx`, `app/contact/page.tsx`.
+- [x] Replace marketing pages with Freeman-equivalent copy: `app/page.tsx` (home), `app/about/page.tsx`, `app/delivery/page.tsx`, `app/faqs/page.tsx`, `app/contact/page.tsx`.
 - [ ] Add `app/sitemap.ts`, `app/robots.ts`, OG tags via metadata API.
 - [ ] Create a public Supabase Storage bucket `product-images`; add an upload helper; replace seed `imageUrl`s with real uploads.
 
